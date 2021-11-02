@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue To Do list</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -16,14 +17,18 @@
                 <h1 class="mb-5">Hello Vueoolean - Todolist</h1>
 
                 <!-- input nuova task -->
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Vorrei..." aria-label="task" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-primary" type="button" id="button-addon2">Aggiungi</button>
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" placeholder="Vorrei..." aria-label="task" aria-describedby="button-addon2"
+                    v-model="newTask" v-on:keyup.enter="addTaskOnClick">
+                    <button class="btn btn-outline-primary" type="button" id="button-addon2" @click="addTaskOnClick">Aggiungi</button>
                 </div>
 
                 <!-- lista delle task -->
                 <ul class="list-group" v-for="task, i in tasksList">
-                    <li class="list-group-item">{{ i }} - {{ task }}</li>
+                    <li class="list-group-item">
+                        {{ i }} - {{ task }}
+                        <i class="fas fa-times" @click="removeTaskOnClick(i)"></i>
+                    </li>
                 </ul>
             </div>
         </main>

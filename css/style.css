@@ -10,3 +10,10 @@ li {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
 }
+
+.fa-times {
+    font-size: 23px;
+    color: rgb(97, 97, 97);
+    position: absolute;
+    right: 20px;
+}
